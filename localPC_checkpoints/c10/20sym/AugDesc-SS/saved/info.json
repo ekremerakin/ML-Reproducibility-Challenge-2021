@@ -1,0 +1,39 @@
+{
+    "T": 0.5,
+    "alpha": 4,
+    "average_loss": 0,
+    "batch_size": 128,
+    "checkpoint_path": "./localPC_checkpoints/c10/20sym/AugDesc-SS",
+    "data_path": "C:/Users/Ekrem/Desktop/cifar-10-batches-py",
+    "dataset": "cifar10",
+    "labeled_transforms": [
+        "transform_strong_10",
+        "transform_strong_10",
+        "transform_strong_10",
+        "transform_strong_10"
+    ],
+    "lambda_u": 0,
+    "learning_rate": 0.02,
+    "lr_switch_epoch": 150,
+    "noise_mode": "sym",
+    "num_class": 10,
+    "num_epochs": 300,
+    "num_workers": 3,
+    "p_threshold": 0.5,
+    "preaugment": false,
+    "preset": "c10.20sym.AugDesc-SS",
+    "pretrained_path": "",
+    "r": 0.2,
+    "save_every": 25,
+    "seed": 123456789,
+    "unlabeled_transforms": [
+        "transform_strong_10",
+        "transform_strong_10",
+        "transform_strong_10",
+        "transform_strong_10"
+    ],
+    "warm_up": 10,
+    "warmup_aug_probability": 1,
+    "warmup_batch_size": 128,
+    "warmup_transform": "transform_weak_10"
+}
