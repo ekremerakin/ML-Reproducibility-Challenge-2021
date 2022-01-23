@@ -208,6 +208,12 @@ if __name__ == "__main__":
         net2.eval()
         all_targets = []
         all_predicted = []
+
+        import time
+        print('test dataset size:', len(test_loader))
+
+        st = time.time()
+
         with torch.no_grad():
             for batch_idx, (inputs, targets) in enumerate(test_loader):
                 inputs, targets = inputs.cuda(), targets.cuda()
@@ -218,6 +224,8 @@ if __name__ == "__main__":
 
                 all_targets += targets.tolist()
                 all_predicted += predicted.tolist()
+
+        print('time passed:', time.time()-st)
 
         accuracy = accuracy_score(all_targets, all_predicted)
         precision = precision_score(all_targets, all_predicted, average="weighted")
