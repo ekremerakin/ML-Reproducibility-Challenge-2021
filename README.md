@@ -10,7 +10,6 @@ Code for ***Augmentation Strategies for Learning with Noisy Labels*** (CVPR 2021
 
 **[Authors](mailto:kento24gs@outlook.com,yding@cs.ucsb.edu,anrich@cs.ucsb.edu,holl@cs.ucsb.edu)**: [Kento Nishi](mailto:kento24gs@outlook.com)\*, [Yi Ding](mailto:yding@cs.ucsb.edu)\*, [Alex Rich](mailto:anrich@cs.ucsb.edu), [Tobias Höllerer](mailto:holl@cs.ucsb.edu) [`*`: [equal contribution](mailto:kento24gs@outlook.com,yding@cs.ucsb.edu)]
 
-<summary>Introduction</summary>
 Data augmentation is common technique that many methods use due to its ability to expand and generalize the existing datasets. There are data augmentation methods that needs to be set by the developers and some are includes learnable augmentation algorithms that can extract prior information from the dataset and set the augmentation strategy. Whether it is learnable or static augmentations, it is proven that implementing data augmentation methods into network training will increase the performance and overall generalizability of the networks. 
 
 Even though data augmentation is a popular research area, there are only few works covering it on the learning with noisy labels area (LNL). The works covering the data augmentation on LNL uses only weak augmentations, like random crop and flip. However, there are no work on stronger augmentations, like sheering and rotation, on LNL yet. In this paper, the main objective is to implement strong augmentation strategies into existing training algorithms to improve the generalizability and robustness of the systems.
@@ -23,20 +22,9 @@ Even though data augmentation is a popular research area, there are only few wor
 [View on arXiv](https://arxiv.org/abs/2103.02130) / [View PDF](https://arxiv.org/pdf/2103.02130.pdf) / [Download Paper Source](https://arxiv.org/e-print/2103.02130) / [Download Source Code](https://github.com/KentoNishi/Augmentation-for-LNL/archive/master.zip)
 
 ## Benchmarks
+Results for this reproducibility challange is seperated into 2 main parts. The first one is the results that was originally in the paper and reproduces using their repository. Those are the test set accuracies for both CIFAR-10 and CIFAR-100. The second results are the ones that was not available in the original work.  It includes warm-up epochs amount and how it effects the overall network performance.
 
 <h3>CIFAR-10</h3>
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-bobw{font-weight:bold;text-align:center;vertical-align:bottom}
-.tg .tg-wa1i{font-weight:bold;text-align:center;vertical-align:middle}
-.tg .tg-nrix{text-align:center;vertical-align:middle}
-.tg .tg-7zrl{text-align:left;vertical-align:bottom}
-.tg .tg-8d8j{text-align:center;vertical-align:bottom}
-</style>
 <table class="tg">
 <thead>
   <tr>
@@ -86,6 +74,67 @@ Even though data augmentation is a popular research area, there are only few wor
 </table>
 
 <h3>CIFAR-100</h3>
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-wa1i" rowspan="2">Type</th>
+    <th class="tg-wa1i" rowspan="2">Method/Noise</th>
+    <th class="tg-bobw" colspan="4">CIFAR-100</th>
+  </tr>
+  <tr>
+    <th class="tg-bobw">20%</th>
+    <th class="tg-bobw">50%</th>
+    <th class="tg-bobw">80%</th>
+    <th class="tg-bobw">90%</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-nrix">Own</td>
+    <td class="tg-7zrl">AugDesc-WS</td>
+    <td class="tg-8d8j">70,30</td>
+    <td class="tg-8d8j">64,17</td>
+    <td class="tg-8d8j">41,5</td>
+    <td class="tg-8d8j">17,51</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix">Paper</td>
+    <td class="tg-7zrl">AugDesc-WS</td>
+    <td class="tg-8d8j">79,46</td>
+    <td class="tg-8d8j">77,52</td>
+    <td class="tg-8d8j">61,63</td>
+    <td class="tg-8d8j">15,05</td>
+  </tr>
+</tbody>
+</table>
+
+<h3>Warm-up Effect</h3>
+
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-wa1i" rowspan="2">Type</th>
+    <th class="tg-wa1i" rowspan="2">Method/Warmup</th>
+    <th class="tg-bobw" colspan="4">CIFAR-100</th>
+  </tr>
+  <tr>
+    <th class="tg-bobw">0</th>
+    <th class="tg-bobw">10</th>
+    <th class="tg-bobw">20</th>
+    <th class="tg-bobw">30</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-nrix">Own</td>
+    <td class="tg-7zrl">AugDesc-WS</td>
+    <td class="tg-8d8j">57,73</td>
+    <td class="tg-8d8j">66,34</td>
+    <td class="tg-8d8j">66,63</td>
+    <td class="tg-8d8j">66,42</td>
+  </tr>
+</tbody>
+</table>
 
 ## Training Locally
 
