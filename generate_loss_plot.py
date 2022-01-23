@@ -33,5 +33,7 @@ plt.figure(figsize=(15, 15))
 for i, t in enumerate(accuracies):
     plt.plot(t, label=labels[i])
 
+plt.ylabel('Test Accuracy')
+plt.xlabel('Epochs')
 plt.legend()
 plt.show()
